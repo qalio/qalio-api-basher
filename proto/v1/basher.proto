@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package basher.v1;
+
+import "proto/v1/common/utils.proto";
+
+message DeliveryRequest {
+  string user_id = 1;
+  string item_id = 2;
+  string pickup_location = 3;
+  string dropoff_location = 4;
+  string timestamp = 5;
+}
+
+message DeliveryResponse {
+  string delivery_id = 1;
+  string status = 2;
+}
+
+service BasherService {
+  rpc ScheduleDelivery(DeliveryRequest) returns (DeliveryResponse);
+  rpc AssignDriver(DeliveryRequest) returns (DeliveryResponse);
+}
